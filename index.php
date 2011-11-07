@@ -2,40 +2,40 @@
 <head>
 <script type="text/javascript">
 <!--
-   // Snipped from http://www.bytemycode.com/snippets/snippet/400/
-     String.prototype.reverse = function(){
-       splitext = this.split("");
-       revertext = splitext.reverse();
-       reversed = revertext.join("");
-       return reversed;
-     }
+	// Snipped from http://www.bytemycode.com/snippets/snippet/400/
+	String.prototype.reverse = function(){
+		splitext = this.split("");
+		revertext = splitext.reverse();
+		reversed = revertext.join("");
+		return reversed;
+    }
 
-   function strip(s) {
-       var re = /\w/g;
-       var resultString = "";
-       var resultIndexes = [];
-       var match;
-       while (match = re.exec(s)) {
-	   resultString += match[0];
-	   resultIndexes += [match.index];
-       }
-       return [resultString, resultIndexes];
-   }   
+	function strip(s) {
+		var re = /\w/g;
+		var resultString = "";
+		var resultIndexes = [];
+		var match;
+		while (match = re.exec(s)) {
+			resultString += match[0];
+			resultIndexes += [match.index];
+		}
+		return [resultString, resultIndexes];
+	}   
 
-   // This is the core. Returns a string that is the reverse of the "letter" characters from src,
-   // with the whitespace/punctuation from dest. 
-   function palReverse(src, dest) {
-       var srcStripped = strip(src);
-       var destStripped = strip(dest);   	
-       /* CODE GOES HERE */
-       return srcStripped[0].reverse();
-   }
+	// This is the core. Returns a string that is the reverse of the "letter" characters from src,
+	// with the whitespace/punctuation from dest. 
+	function palReverse(src, dest) {
+		var srcStripped = strip(src);
+		var destStripped = strip(dest);   	
+		/* CODE GOES HERE */
+		return srcStripped[0].reverse();
+	}
 
-   function updatePal(src, dest) {
-      var srcObj = document.getElementById(src);
-      var destObj = document.getElementById(dest);
-      destObj.value = palReverse(srcObj.value, destObj.value); 
-   }
+	function updatePal(src, dest) {
+		var srcObj = document.getElementById(src);
+		var destObj = document.getElementById(dest);
+		destObj.value = palReverse(srcObj.value, destObj.value); 
+	}
  // -->
 </script>
 </head>
