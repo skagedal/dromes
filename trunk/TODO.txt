@@ -1,0 +1,3 @@
+ - when whole text is deleted, also remove punctuation from the other field.
+ - recognize all letters
+ - speed up
