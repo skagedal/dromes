@@ -16,8 +16,9 @@
 	// Strip the string s from all nonletters. We also need to keep track of where the letters came from
 	// in the string, so we also return an array with indices.
 	function strip(s) {
-		// TODO: Use the XRegExp stuff to recognize all Unicode letters
-		var re = /\w/g;
+		// Unicode letters are included in palindromes. Maybe numbers as well?
+		// TODO: "\u0061\u0300" (a`; often viewed as à) is not handled as one character
+		var re = XRegExp("\\p{L}", "g");
 		var result = new Object();
 		result.str = "";
 		result.indices = [];
@@ -58,13 +59,13 @@
 			
 			var operation = diff[i][0];
 			var opchars = diff[i][1];
-			if (operation == 0) {			// A chunk of unchanged characters
+			if (operation == DIFF_EQUAL) {				// A chunk of unchanged characters
 				processed += opchars.length;
-			} else if (operation == 1) {	// A chunk of new characters
+			} else if (operation == DIFF_INSERT) {		// A chunk of new characters
 				index = destStripped.indices[processed] + offset;
 				dest = dest.slice(0, index) + opchars + dest.slice(index);
 				offset += opchars.length;
-			} else if (operation == -1)	{	// A chunk of removed characters
+			} else if (operation == DIFF_DELETE)	{	// A chunk of removed characters
 				for (var j = 0; j < opchars.length; j++) {
 					index = destStripped.indices[processed] + offset;
 					dest = dest.slice(0, index) + dest.slice(index + 1);

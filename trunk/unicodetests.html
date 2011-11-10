@@ -1,0 +1,43 @@
+<html>
+<head>
+<script src="js/xregexp-min.js"></script>
+<script src="js/xregexp-unicode-base.js"></script>
+
+<script type="text/javascript">
+	function isLetter_ascii(s) {
+		return /^\w$/.test(s);
+	}
+
+	function isLetter_silly(s) {
+		return s.length == 1 && s.toLower() != s.toUpper();
+	}
+
+	function isLetter_good(s) {
+		return XRegExp("^\\p{L}$").test(s);
+	}
+	
+	document.versions = [[isLetter_ascii, "ascii"], [isLetter_silly, "silly"], [isLetter_good, "good"]];
+	document.my_tests = [["a", true], ["å", true], ["+", false], ["?", true], ["\u00df", true]];
+
+	// Simple version: Splits 
+	function reverseString(s) {
+		return s.split("").reverse().join("");
+	}
+</script>
+</head>
+<body>
+<script type="text/javascript">
+	document.write("Hello!");
+	document.write("<table><tr><td>String</td>");
+	for (var i = 0; i < document.versions.length; i++) 
+		document.write("<td>" + document.versions[i][1] + "</td>");
+	document.write("</tr>");
+	var tests = document.my_tests;
+	for (var i = 0; i < tests.length; i++) {
+		document.write("<tr><td>" + tests[i][0] + "</td>");
+		// TEST THE FUNCTION
+
+		}
+</script>
+</body>
+</html>
